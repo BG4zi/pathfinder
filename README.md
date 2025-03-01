@@ -4,7 +4,15 @@ A fork of [Dirbuster](https://www.kali.org/tools/dirbuster/) written in Rust.
 
 For now, It is the simplest app it will be developed time by time for new features.
 
-## USAGE
+## Installation
+```bash
+$ git clone https://github.com/BG4zi/pathfinder.git &&
+  cd pathfinder
+  cargo build
+  ./target/debug/pathfinder --version
+```
+
+## Usage
 ```bash
 $ pathfinder --url <url> --wordlist <wordlist>	
 ```
