@@ -19,13 +19,32 @@ $ pathfinder --url <url> --wordlist <wordlist>
 
 ```txt
 OPTIONS:
-    -h, --help                   Print help information
-        --url <url>              The base URL
-    -V, --version                Print version information
-        --wordlist <wordlist>    Path to wordlist
+    -c, --status_codes <status_codes>
+            only prints the specified status codes codes should be listed like 200,400,500 [default:
+            NO_CODE]
+
+        --debug <debug-mode>
+            [default: 1]
+
+    -h, --help
+            Print help information
+
+    -o, --output <output>
+            Saves the log into the file that's given
+
+    -u, --url <url>
+            The base URL
+
+    -V, --version
+            Print version information
+
+    -w, --wordlist <wordlist>
+            Path to wordlist
 ```
 
 ## Features
 - Simple getting the paths from wordlist of the website with status codes
+- Specifiable Status Codes to get
+- Save the log
 - Fast, uses Coroutines
 - Colorful
