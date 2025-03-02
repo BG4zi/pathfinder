@@ -106,7 +106,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 	 let reader = BufReader::new(file);
 	 let mut lines = reader.lines();
 
-	 let semaphore = Arc::new(Semaphore::new(1000));
+	 let semaphore = Arc::new(Semaphore::new(80));
 
 	 let mut handles = Vec::new();
 
@@ -186,6 +186,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 	 for handle in handles {
 		  handle.await?;
 	 }
-	 
 	 Ok(())
 }
