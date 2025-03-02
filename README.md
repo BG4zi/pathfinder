@@ -24,3 +24,8 @@ OPTIONS:
     -V, --version                Print version information
         --wordlist <wordlist>    Path to wordlist
 ```
+
+## Features
+- Simple getting the paths from wordlist of the website with status codes
+- Fast, uses Coroutines
+- Colorful
