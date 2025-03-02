@@ -48,7 +48,7 @@ fn get_args() -> RunArgs {
 				 .required(false)
 				 .default_missing_value("NO_CODE")
 				 .default_value("NO_CODE")
-				 .help("only prints the specified status code"))
+				 .help("only prints the specified status codes codes should be listed like 200,400,500"))
 		  .arg(Arg::new("debug-mode")
 				 .long("debug")
 				 .takes_value(false)
