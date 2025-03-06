@@ -7,7 +7,7 @@ use tokio::{
 	 task,
 };
 
-use std::{sync::Arc};
+use std::sync::Arc;
 use clap::{Arg, App};
 
 struct RunArgs {
@@ -15,7 +15,8 @@ struct RunArgs {
     pub wordlist: String,
     pub output: String,
 	 pub status_codes: Vec<String>,
-	 pub debug: bool
+	 pub debug: bool,
+	 pub no_color: bool,
 }
 
 fn get_args() -> RunArgs {
@@ -55,8 +56,14 @@ fn get_args() -> RunArgs {
 				 .default_missing_value("0")
 				 .default_value("1")
 				 .required(false)
-				 
-		  )
+				 .help("prints the errors"))
+		  .arg(Arg::new("no-color")
+				 .long("no-color")
+				 .takes_value(false)
+				 .default_missing_value("0")
+				 .default_value("1")
+				 .required(false)
+				 .help("prints the log without color"))
 		  .get_matches();
 	 
 	 let url = matches
@@ -86,9 +93,20 @@ fn get_args() -> RunArgs {
 	 } else {
 		  debug = false; 
 	 }
-	 
 
-	 RunArgs { url, wordlist, status_codes, output, debug}
+	 let no_color_raw = matches.value_of("no-color")
+		  .unwrap()
+		  .to_owned();
+	 let no_color: bool;
+
+	 if no_color_raw == "1" {
+		  no_color = true;
+	 } else {
+		  no_color = false; 
+	 }
+
+
+	 RunArgs { url, wordlist, status_codes, output, debug, no_color}
 }
 
 
@@ -147,7 +165,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 								match response.status()  {							
 									 StatusCode::OK => {
 										  // Handle successful response (200)
-										  print!("{}", format!("{}", msg).green());
+										  let res = format!("{}", msg);
+										  if args.no_color {
+												println!("{}", res);
+										  }  else {
+												print!("{}", res.green());
+      								  }
 									 }
 									 StatusCode::NOT_FOUND => {
 										  // Handle "Not Found" (404)
