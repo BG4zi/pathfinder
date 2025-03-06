@@ -14,7 +14,7 @@ $ git clone https://github.com/BG4zi/pathfinder.git &&
 
 ## Usage
 ```bash
-$ pathfinder --url <url> --wordlist <wordlist>	
+$ pathfinder [OPTIONS] --url <url> --wordlist <wordlist>
 ```
 
 ```txt
@@ -24,10 +24,13 @@ OPTIONS:
             NO_CODE]
 
         --debug <debug-mode>
-            [default: 1]
+            prints the errors [default: 1]
 
     -h, --help
             Print help information
+
+        --no-color <no-color>
+            prints the log without color [default: 1]
 
     -o, --output <output>
             Saves the log into the file that's given
